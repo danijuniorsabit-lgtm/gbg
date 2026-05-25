@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grand Beton Group — Товарный бетон стандарта ГОСТ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════
+   RESET
+══════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;color:#111827;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{text-decoration:none}
+button{font-family:'Manrope',sans-serif;cursor:pointer}
+
+/* ══════════════════════════════════════════
+   VARIABLES
+══════════════════════════════════════════ */
+:root{
+  --navy:#0d2a5e;--navy-mid:#1a3a7a;--blue:#1e4db7;--blue-light:#2563eb;
+  --accent:#f59e0b;--white:#fff;--off:#f4f6fa;
+  --g100:#f3f4f6;--g200:#e5e7eb;--g300:#d1d5db;
+  --tmid:#374151;--tmut:#6b7280;
+  --nav-h:80px;
+  --sh-md:0 8px 32px rgba(13,42,94,.12);
+  --sh-lg:0 24px 64px rgba(13,42,94,.18);
+  --r-lg:24px;--r-md:16px;--r-sm:12px;
+}
+
+/* ══════════════════════════════════════════
+   NAV
+══════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:300;
+  display:flex;align-items:center;justify-content:center;padding:0 24px;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(13,42,94,.07);transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,.09)}
+.nav-pill{
+  display:flex;align-items:center;gap:8px;
+  background:#fff;border-radius:50px;
+  border:1.5px solid rgba(13,42,94,.11);
+  box-shadow:0 2px 12px rgba(13,42,94,.06);
+  padding:8px;width:100%;max-width:960px;
+}
+.nav-logo{width:44px;height:44px;background:var(--navy);border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.nav-logo svg{fill:#fff}
+.nav-links{display:flex;gap:2px;padding:0 8px;flex:1;flex-wrap:wrap}
+.nav-links a{font-size:13px;font-weight:500;color:var(--tmid);padding:7px 12px;border-radius:50px;transition:background .2s,color .2s;white-space:nowrap}
+.nav-links a:hover{background:var(--off);color:var(--blue)}
+.btn-nav{background:var(--navy);color:#fff;border:none;border-radius:50px;padding:11px 20px;font-size:13px;font-weight:700;transition:background .2s,transform .15s;white-space:nowrap;flex-shrink:0}
+.btn-nav:hover{background:var(--blue);transform:translateY(-1px)}
+.burger{display:none;flex-direction:column;gap:5px;padding:8px;margin-left:auto;background:none;border:none}
+.burger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:transform .3s,opacity .3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#fff;z-index:290;border-bottom:1px solid var(--g200);padding:16px 24px 28px;flex-direction:column;gap:0;box-shadow:0 12px 32px rgba(0,0,0,.08)}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:16px;font-weight:600;color:var(--tmid);padding:14px 0;border-bottom:1px solid var(--g100);transition:color .2s}
+.mob-menu a:last-child{border-bottom:none}
+.mob-menu a:hover{color:var(--blue)}
+.mob-cta{margin-top:16px;background:var(--navy);color:#fff;text-align:center;padding:16px;border-radius:12px;font-weight:700;font-size:16px;border-bottom:none!important}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+.hero{min-height:100vh;min-height:100dvh;padding-top:var(--nav-h);display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;background:#fff}
+.hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+.hero-bg::before{content:'';position:absolute;top:-80px;left:-140px;width:580px;height:580px;background:radial-gradient(circle at 40% 40%,rgba(200,198,190,.26) 0%,transparent 65%);border-radius:60% 40% 70% 30%/50% 60% 40% 50%;animation:blobFloat 10s ease-in-out infinite}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(28px,-18px) scale(1.04)}70%{transform:translate(-14px,14px) scale(.97)}}
+.hero-left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:60px 56px 60px 80px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(13,42,94,.07);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:7px 18px;border-radius:50px;margin-bottom:28px;width:fit-content;animation:fadeUp .7s ease both}
+.hero-tag::before{content:'';width:7px;height:7px;background:var(--blue-light);border-radius:50%;flex-shrink:0}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,8.5vw,116px);line-height:.9;color:var(--navy);margin-bottom:28px;letter-spacing:2px;animation:fadeUp .7s .08s ease both}
+.hero-title .blue{color:var(--blue-light)}
+.hero-desc{font-size:clamp(15px,1.3vw,17px);line-height:1.75;color:var(--tmid);max-width:400px;margin-bottom:44px;font-weight:400;animation:fadeUp .7s .16s ease both}
+.hero-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;animation:fadeUp .7s .24s ease both}
+.btn-hero{background:var(--navy);color:#fff;border:none;border-radius:50px;padding:15px 32px;font-size:15px;font-weight:700;transition:background .2s,transform .15s,box-shadow .2s;white-space:nowrap}
+.btn-hero:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 10px 28px rgba(13,42,94,.25)}
+.btn-calc{background:transparent;color:var(--navy);border:2px solid rgba(13,42,94,.22);border-radius:50px;padding:13px 26px;font-size:14px;font-weight:700;transition:background .2s,border-color .2s;white-space:nowrap}
+.btn-calc:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.hero-trust{display:flex;align-items:center;gap:24px;margin-top:52px;padding-top:28px;border-top:1px solid var(--g200);animation:fadeUp .7s .32s ease both;flex-wrap:wrap}
+.trust-item{display:flex;flex-direction:column}
+.trust-item strong{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--navy);letter-spacing:1px;line-height:1}
+.trust-item span{font-size:11px;color:var(--tmut);font-weight:500;margin-top:2px}
+.trust-sep{width:1px;height:40px;background:var(--g200);flex-shrink:0}
+.hero-right{position:relative;z-index:2;overflow:hidden}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;animation:heroImgIn 1.1s ease both}
+@keyframes heroImgIn{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:scale(1)}}
+.hero-right::before{content:'';position:absolute;top:0;left:0;width:100px;height:100%;background:linear-gradient(90deg,#fff,transparent);z-index:3;pointer-events:none}
+.hero-badge{position:absolute;bottom:36px;left:36px;background:var(--navy);color:#fff;border-radius:16px;padding:18px 26px;z-index:4;box-shadow:var(--sh-lg);animation:badgeIn 1.3s ease both;border:1px solid rgba(255,255,255,.1)}
+@keyframes badgeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge strong{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1px;display:block;line-height:1}
+.hero-badge span{font-size:13px;opacity:.7;display:block;margin-top:2px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══════════════════════════════════════════
+   SECTION COMMONS
+══════════════════════════════════════════ */
+section{padding:96px 80px}
+.sec-head{text-align:center;margin-bottom:56px}
+.display{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,5vw,62px);color:var(--navy);letter-spacing:1px;line-height:1;margin-bottom:14px}
+.label-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue-light);margin-bottom:10px}
+.sec-head p{font-size:16px;color:var(--tmut);max-width:500px;margin:0 auto;line-height:1.7}
+.divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:12px 0 28px}
+.divider::before,.divider::after{content:'';flex:1;max-width:100px;height:1.5px;background:linear-gradient(90deg,transparent,var(--g200))}
+.divider::after{background:linear-gradient(90deg,var(--g200),transparent)}
+.vis-init{opacity:0;transform:translateY(28px)}
+.vis-init.vis{opacity:1;transform:translateY(0);transition:opacity .55s,transform .55s}
+
+/* ══════════════════════════════════════════
+   PRICE SECTION
+══════════════════════════════════════════ */
+#price{background:var(--off)}
+.price-intro{text-align:center;margin-bottom:40px}
+.price-intro small{display:block;font-size:13px;color:var(--tmut);margin-top:8px}
+.price-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.price-tab{padding:10px 22px;border-radius:50px;border:1.5px solid var(--g200);background:#fff;font-size:14px;font-weight:600;color:var(--tmid);cursor:pointer;transition:all .2s}
+.price-tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.price-tab:hover:not(.active){border-color:var(--navy);color:var(--navy)}
+.price-table-wrap{overflow-x:auto;border-radius:var(--r-lg);box-shadow:var(--sh-md)}
+.price-table{width:100%;border-collapse:collapse;background:#fff;min-width:600px}
+.price-table thead tr{background:var(--navy);color:#fff}
+.price-table th{padding:16px 20px;text-align:left;font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+.price-table td{padding:14px 20px;font-size:14px;color:var(--tmid);border-bottom:1px solid var(--g100)}
+.price-table tbody tr:hover{background:var(--off)}
+.price-table tbody tr:last-child td{border-bottom:none}
+.price-table .grade{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--navy);letter-spacing:.5px}
+.price-table .price-val{font-weight:800;color:var(--blue);font-size:15px}
+.price-table .badge-pop{display:inline-block;background:var(--accent);color:var(--navy);font-size:10px;font-weight:700;padding:2px 8px;border-radius:50px;margin-left:8px;vertical-align:middle}
+.price-note{margin-top:20px;text-align:center;font-size:13px;color:var(--tmut);line-height:1.6}
+/* Table panels */
+.price-panel{display:none}
+.price-panel.active{display:block}
+
+/* ══════════════════════════════════════════
+   CALCULATOR
+══════════════════════════════════════════ */
+#calc{background:#fff}
+.calc-wrap{max-width:860px;margin:0 auto}
+.calc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:40px;position:relative}
+.calc-steps::before{content:'';position:absolute;top:22px;left:12%;right:12%;height:2px;background:var(--g200);z-index:0}
+.calc-step-dot{display:flex;flex-direction:column;align-items:center;position:relative;z-index:1}
+.step-circle{width:44px;height:44px;border-radius:50%;background:var(--g200);color:var(--tmut);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;transition:background .3s,color .3s;border:3px solid #fff;box-shadow:0 0 0 1px var(--g200)}
+.calc-step-dot.done .step-circle{background:var(--navy);color:#fff;box-shadow:0 0 0 1px var(--navy)}
+.calc-step-dot.active .step-circle{background:var(--blue-light);color:#fff;box-shadow:0 0 0 4px rgba(37,99,235,.15)}
+.step-label{font-size:11px;font-weight:600;color:var(--tmut);margin-top:8px;text-align:center;line-height:1.3;max-width:80px}
+.calc-step-dot.active .step-label{color:var(--blue-light);font-weight:700}
+.calc-step-dot.done .step-label{color:var(--navy)}
+
+/* Step panels */
+.calc-panel{display:none;animation:fadeUp .4s ease both}
+.calc-panel.active{display:block}
+.calc-panel-title{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--navy);letter-spacing:.5px;margin-bottom:20px;text-align:center}
+
+/* Option cards */
+.opt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.opt-card{padding:20px 16px;border-radius:var(--r-md);border:2px solid var(--g200);background:#fff;text-align:center;cursor:pointer;transition:all .2s;position:relative}
+.opt-card:hover{border-color:var(--blue-light);box-shadow:0 4px 16px rgba(37,99,235,.1)}
+.opt-card.selected{border-color:var(--navy);background:rgba(13,42,94,.04);box-shadow:0 4px 20px rgba(13,42,94,.12)}
+.opt-card.selected::after{content:'✓';position:absolute;top:8px;right:10px;font-size:14px;font-weight:800;color:var(--navy)}
+.opt-card .opt-icon{font-size:28px;margin-bottom:8px}
+.opt-card .opt-name{font-size:13px;font-weight:700;color:var(--navy)}
+.opt-card .opt-sub{font-size:11px;color:var(--tmut);margin-top:3px}
+
+/* Grade grid */
+.grade-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.grade-card{padding:18px 14px;border-radius:var(--r-md);border:2px solid var(--g200);background:#fff;text-align:center;cursor:pointer;transition:all .2s;position:relative}
+.grade-card:hover{border-color:var(--blue-light)}
+.grade-card.selected{border-color:var(--navy);background:rgba(13,42,94,.04)}
+.grade-card.selected::after{content:'✓';position:absolute;top:6px;right:8px;font-size:12px;font-weight:800;color:var(--navy)}
+.grade-card .gc-grade{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--navy);letter-spacing:1px}
+.grade-card .gc-class{font-size:11px;color:var(--blue-light);font-weight:700;margin-top:2px}
+.grade-card .gc-price{font-size:12px;color:var(--tmut);margin-top:6px}
+.grade-card .gc-pop{display:inline-block;background:var(--accent);color:var(--navy);font-size:9px;font-weight:700;padding:1px 7px;border-radius:50px;margin-top:4px}
+
+/* Volume step */
+.vol-wrap{max-width:480px;margin:0 auto}
+.vol-display{text-align:center;margin-bottom:28px}
+.vol-number{font-family:'Bebas Neue',sans-serif;font-size:72px;color:var(--navy);line-height:1;letter-spacing:2px}
+.vol-unit{font-size:16px;color:var(--tmut);font-weight:600}
+.vol-slider{width:100%;-webkit-appearance:none;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--navy) var(--pct,10%),var(--g200) var(--pct,10%));outline:none;margin-bottom:16px}
+.vol-slider::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--navy);cursor:pointer;border:3px solid #fff;box-shadow:0 2px 8px rgba(13,42,94,.3)}
+.vol-slider::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--navy);cursor:pointer;border:3px solid #fff;box-shadow:0 2px 8px rgba(13,42,94,.3);border:none}
+.vol-marks{display:flex;justify-content:space-between;font-size:12px;color:var(--tmut);margin-bottom:24px}
+.vol-manual{display:flex;align-items:center;gap:12px;justify-content:center}
+.vol-manual input{width:100px;padding:10px 14px;border:1.5px solid var(--g200);border-radius:10px;font-size:16px;font-weight:700;color:var(--navy);text-align:center;outline:none;font-family:'Manrope',sans-serif}
+.vol-manual input:focus{border-color:var(--navy)}
+.vol-manual span{font-size:14px;color:var(--tmut)}
+
+/* Result step */
+.calc-result{background:var(--navy);border-radius:var(--r-lg);padding:40px;color:#fff;text-align:center;margin-bottom:28px}
+.calc-result .res-label{font-size:13px;opacity:.6;margin-bottom:8px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
+.calc-result .res-price{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);letter-spacing:2px;line-height:1;margin-bottom:4px}
+.calc-result .res-hint{font-size:13px;opacity:.55}
+.calc-result .res-details{display:flex;justify-content:center;gap:32px;margin-top:24px;flex-wrap:wrap}
+.res-detail-item{display:flex;flex-direction:column;align-items:center}
+.res-detail-item span:first-child{font-size:11px;opacity:.55;text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:4px}
+.res-detail-item span:last-child{font-size:15px;font-weight:700}
+
+/* Calc form */
+.calc-form{background:var(--off);border-radius:var(--r-lg);padding:32px}
+.calc-form h3{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--navy);margin-bottom:6px;letter-spacing:.5px}
+.calc-form p{font-size:14px;color:var(--tmut);margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.calc-form .field input,.calc-form .field textarea{width:100%;padding:13px 16px;border:1.5px solid var(--g200);border-radius:10px;font-size:14px;color:#111;outline:none;font-family:'Manrope',sans-serif;background:#fff;transition:border-color .2s}
+.calc-form .field input:focus,.calc-form .field textarea:focus{border-color:var(--navy)}
+.calc-form .field input::placeholder,.calc-form .field textarea::placeholder{color:var(--tmut)}
+.calc-form .field textarea{resize:vertical;min-height:80px}
+.field{margin-bottom:0}
+
+/* Nav buttons */
+.calc-nav{display:flex;align-items:center;justify-content:space-between;margin-top:32px;gap:12px}
+.btn-back{background:transparent;color:var(--tmid);border:1.5px solid var(--g200);border-radius:50px;padding:12px 24px;font-size:14px;font-weight:600;transition:all .2s}
+.btn-back:hover{border-color:var(--navy);color:var(--navy)}
+.btn-next{background:var(--navy);color:#fff;border:none;border-radius:50px;padding:13px 32px;font-size:15px;font-weight:700;transition:background .2s,transform .15s}
+.btn-next:hover{background:var(--blue);transform:translateY(-1px)}
+.btn-next:disabled{background:var(--g300);cursor:not-allowed;transform:none}
+.btn-submit-calc{background:var(--accent);color:var(--navy);border:none;border-radius:50px;padding:15px 36px;font-size:16px;font-weight:800;transition:all .2s}
+.btn-submit-calc:hover{background:#fbbf24;transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,158,11,.35)}
+.calc-success{text-align:center;padding:48px 24px;display:none}
+.calc-success .success-ico{font-size:56px;margin-bottom:16px}
+.calc-success h3{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--navy);margin-bottom:8px}
+.calc-success p{font-size:15px;color:var(--tmut)}
+
+/* ══════════════════════════════════════════
+   WHY US
+══════════════════════════════════════════ */
+#why{background:var(--off)}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;max-width:1120px;margin:0 auto}
+.why-card{background:#fff;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-md);border:1px solid rgba(13,42,94,.06);transition:box-shadow .3s}
+.why-card:hover{transform:translateY(-4px);box-shadow:var(--sh-lg)}
+.why-card-img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.why-card-body{padding:26px 28px 30px}
+.why-card-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:12px}
+.why-num{width:42px;height:42px;min-width:42px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:22px;margin-top:2px}
+.why-card-body h3{font-family:'Bebas Neue',sans-serif;font-size:21px;color:var(--navy);letter-spacing:.5px;line-height:1.1}
+.why-card-body p{font-size:14px;line-height:1.75;color:var(--tmut)}
+
+/* ══════════════════════════════════════════
+   STATS / ADVANTAGES
+══════════════════════════════════════════ */
+#advantages{background:linear-gradient(150deg,#0b2454 0%,#1a3a7a 50%,#1a4d99 100%);position:relative;overflow:hidden}
+#advantages::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none}
+#advantages .display{color:#fff}
+#advantages .sec-head p{color:rgba(255,255,255,.6)}
+#advantages .label-tag{color:var(--accent)}
+#advantages .divider::before,#advantages .divider::after{background:rgba(255,255,255,.15)}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:740px;margin:0 auto;position:relative;z-index:2}
+.stat-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);border-radius:var(--r-lg);padding:36px 32px;transition:background .3s}
+.stat-card:hover{background:rgba(255,255,255,.12)}
+.stat-val{font-family:'Bebas Neue',sans-serif;font-size:58px;color:#fff;line-height:.95;letter-spacing:1px;margin-bottom:10px}
+.stat-val sup{font-size:28px}
+.stat-card:nth-child(1) .stat-val{color:var(--accent)}
+.stat-card:nth-child(3) .stat-val{color:#7dd3fc}
+.stat-desc{font-size:14px;color:rgba(255,255,255,.65);line-height:1.55}
+
+/* ══════════════════════════════════════════
+   CASES
+══════════════════════════════════════════ */
+#cases{background:#fff}
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1120px;margin:0 auto}
+.case-card{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-md);border:1px solid rgba(13,42,94,.06);transition:transform .3s,box-shadow .3s;position:relative}
+.case-card:hover{transform:translateY(-5px);box-shadow:var(--sh-lg)}
+.case-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.case-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,42,94,.85) 0%,transparent 55%);pointer-events:none}
+.case-body{position:absolute;bottom:0;left:0;right:0;padding:24px;color:#fff}
+.case-tag{display:inline-block;background:var(--accent);color:var(--navy);font-size:10px;font-weight:700;padding:3px 10px;border-radius:50px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.case-body h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;margin-bottom:4px;line-height:1.1}
+.case-body p{font-size:12px;opacity:.75;line-height:1.5}
+.case-stats{display:flex;gap:14px;margin-top:10px;flex-wrap:wrap}
+.case-stat{font-size:11px;font-weight:700;background:rgba(255,255,255,.12);padding:4px 10px;border-radius:50px}
+.cases-cta{text-align:center;margin-top:40px}
+.cases-cta p{font-size:14px;color:var(--tmut);margin-bottom:16px}
+
+/* ══════════════════════════════════════════
+   CERTS
+══════════════════════════════════════════ */
+#certs{background:var(--off)}
+.certs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1000px;margin:0 auto}
+.cert-card{background:#fff;border-radius:var(--r-md);border:1.5px solid var(--g200);padding:28px 20px;text-align:center;transition:all .3s;position:relative;overflow:hidden;cursor:pointer}
+.cert-card:hover{border-color:var(--navy);box-shadow:var(--sh-md);transform:translateY(-3px)}
+.cert-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--navy),var(--blue-light))}
+.cert-icon{font-size:36px;margin-bottom:12px}
+.cert-card h4{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--navy);letter-spacing:.5px;margin-bottom:6px;line-height:1.2}
+.cert-card p{font-size:12px;color:var(--tmut);line-height:1.5}
+.cert-placeholder{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,var(--g100),var(--g200));border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:32px;border:2px dashed var(--g300)}
+.cert-badge{display:inline-block;background:rgba(13,42,94,.08);color:var(--navy);font-size:10px;font-weight:700;padding:3px 10px;border-radius:50px;margin-top:6px;letter-spacing:.5px}
+
+/* ══════════════════════════════════════════
+   REVIEWS
+══════════════════════════════════════════ */
+#reviews{background:#fff}
+.reviews-layout{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start}
+.reviews-list{display:flex;flex-direction:column;gap:20px}
+.review-card{background:var(--off);border-radius:var(--r-lg);padding:28px;border:1px solid var(--g200);transition:box-shadow .3s;position:relative}
+.review-card:hover{box-shadow:var(--sh-md)}
+.review-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+.review-avatar{width:48px;height:48px;min-width:48px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:22px}
+.review-meta h4{font-size:15px;font-weight:700;color:#111}
+.review-meta span{font-size:12px;color:var(--tmut)}
+.review-stars{display:flex;gap:3px;margin-top:4px}
+.star{color:#f59e0b;font-size:14px}
+.star.empty{color:var(--g200)}
+.review-text{font-size:14px;color:var(--tmid);line-height:1.7}
+.review-date{font-size:11px;color:var(--tmut);margin-top:10px}
+.review-verified{position:absolute;top:16px;right:16px;background:rgba(34,197,94,.1);color:#16a34a;font-size:10px;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.5px}
+
+/* Add review form */
+.add-review-box{background:var(--navy);border-radius:var(--r-lg);padding:32px;color:#fff;position:sticky;top:calc(var(--nav-h) + 20px)}
+.add-review-box h3{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.5px;margin-bottom:6px}
+.add-review-box p{font-size:13px;opacity:.6;margin-bottom:24px}
+.star-picker{display:flex;gap:6px;margin-bottom:20px;flex-direction:row}
+.star-btn{font-size:26px;cursor:pointer;color:rgba(255,255,255,.2);transition:color .15s;background:none;border:none;padding:0;line-height:1}
+.star-btn.lit{color:var(--accent)}
+.rev-field{margin-bottom:14px}
+.rev-field input,.rev-field textarea{width:100%;background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.16);border-radius:10px;padding:13px 16px;font-size:14px;color:#fff;outline:none;font-family:'Manrope',sans-serif;transition:border-color .2s;-webkit-appearance:none}
+.rev-field input::placeholder,.rev-field textarea::placeholder{color:rgba(255,255,255,.35)}
+.rev-field input:focus,.rev-field textarea:focus{border-color:var(--accent)}
+.rev-field textarea{resize:vertical;min-height:90px}
+.btn-post{width:100%;background:var(--accent);color:var(--navy);border:none;border-radius:10px;padding:15px;font-size:15px;font-weight:800;transition:all .2s;margin-top:4px}
+.btn-post:hover{background:#fbbf24;transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,158,11,.3)}
+.reviews-count{font-size:13px;opacity:.5;text-align:center;margin-top:12px}
+
+/* ══════════════════════════════════════════
+   CONTACT
+══════════════════════════════════════════ */
+#contact{background:var(--off);padding:80px 40px}
+.contact-wrap{max-width:960px;margin:0 auto;background:var(--navy);border-radius:32px;padding:60px 64px;display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start;position:relative;overflow:hidden}
+.contact-wrap::before{content:'';position:absolute;width:320px;height:320px;background:rgba(255,255,255,.04);border-radius:50%;top:-100px;right:-80px;pointer-events:none}
+.contact-left{position:relative;z-index:2}
+.contact-left h2{font-family:'Bebas Neue',sans-serif;font-size:38px;color:#fff;letter-spacing:.5px;line-height:1.05;margin-bottom:14px}
+.contact-left>p{color:rgba(255,255,255,.6);font-size:14px;line-height:1.7;margin-bottom:32px}
+.contact-details{display:flex;flex-direction:column;gap:14px}
+.contact-row{display:flex;align-items:flex-start;gap:12px}
+.contact-icon{width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.contact-row a,.contact-row span{color:rgba(255,255,255,.82);font-size:14px;line-height:1.5;transition:color .2s}
+.contact-row a:hover{color:var(--accent)}
+.contact-right{position:relative;z-index:2}
+.cfield{margin-bottom:14px}
+.cfield input{width:100%;background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.16);border-radius:12px;padding:15px 18px;font-family:'Manrope',sans-serif;font-size:15px;color:#fff;outline:none;transition:border-color .2s,background .2s;-webkit-appearance:none}
+.cfield input::placeholder{color:rgba(255,255,255,.38)}
+.cfield input:focus{border-color:var(--accent);background:rgba(255,255,255,.13)}
+.btn-submit{width:100%;background:var(--accent);color:var(--navy);border:none;border-radius:12px;padding:17px;font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;cursor:pointer;margin-top:6px;transition:transform .15s,box-shadow .2s,background .2s}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,158,11,.38);background:#fbbf24}
+.manager-tag{margin-top:14px;text-align:center;color:rgba(255,255,255,.4);font-size:12px}
+
+/* Map embed */
+.map-wrap{margin-top:20px;border-radius:var(--r-md);overflow:hidden;border:2px solid rgba(255,255,255,.12)}
+.map-link-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);padding:14px;font-size:13px;font-weight:600;border-top:1px solid rgba(255,255,255,.1);transition:background .2s}
+.map-link-btn:hover{background:rgba(255,255,255,.14);color:#fff}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+footer{background:var(--off);border-top:1px solid var(--g200);padding:28px 80px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--navy);letter-spacing:1.5px}
+footer p{font-size:13px;color:var(--tmut)}
+
+/* ══════════════════════════════════════════
+   MODAL (certs)
+══════════════════════════════════════════ */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:500;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:var(--r-lg);max-width:500px;width:100%;padding:40px;position:relative;animation:fadeUp .3s ease both}
+.modal-close{position:absolute;top:16px;right:16px;background:var(--g100);border:none;border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.modal-close:hover{background:var(--g200)}
+.modal-box h3{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--navy);margin-bottom:12px}
+.modal-box p{font-size:14px;color:var(--tmut);line-height:1.7;margin-bottom:8px}
+.modal-cert-img{width:100%;border-radius:10px;margin-bottom:16px;border:1px solid var(--g200)}
+
+/* ══════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════ */
+.toast{position:fixed;bottom:28px;right:28px;background:var(--navy);color:#fff;padding:14px 22px;border-radius:12px;font-size:14px;font-weight:600;box-shadow:var(--sh-lg);z-index:600;transform:translateY(20px);opacity:0;transition:all .3s;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE TABLET ≤ 1024
+══════════════════════════════════════════ */
+@media(max-width:1024px){
+  section{padding:80px 40px}
+  .hero-left{padding:48px 40px 48px 48px}
+  footer{padding:28px 40px}
+  .contact-wrap{padding:48px}
+  .cases-grid{grid-template-columns:repeat(2,1fr)}
+  .certs-grid{grid-template-columns:repeat(2,1fr)}
+  .reviews-layout{grid-template-columns:1fr}
+  .add-review-box{position:static}
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE MOBILE ≤ 768
+══════════════════════════════════════════ */
+@media(max-width:768px){
+  :root{--nav-h:68px}
+  .nav-pill{border-radius:16px;padding:10px 14px}
+  .nav-links,.btn-nav{display:none}
+  .burger{display:flex}
+  .hero{grid-template-columns:1fr;grid-template-rows:auto 1fr;min-height:100dvh}
+  .hero-right{order:-1;height:55vw;min-height:220px;max-height:360px}
+  .hero-right::before{display:none}
+  .hero-badge{bottom:16px;left:16px;padding:12px 18px}
+  .hero-badge strong{font-size:28px}
+  .hero-left{padding:28px 20px 44px}
+  .hero-tag{font-size:10px;margin-bottom:16px}
+  .hero-title{font-size:clamp(56px,15vw,86px);margin-bottom:16px}
+  .hero-desc{font-size:15px;margin-bottom:28px;max-width:100%}
+  .hero-cta{flex-wrap:wrap;gap:10px}
+  .btn-hero,.btn-calc{padding:13px 22px;font-size:14px}
+  .hero-trust{gap:14px;margin-top:28px}
+  .trust-item strong{font-size:22px}
+  section{padding:60px 20px}
+  .sec-head{margin-bottom:36px}
+  .display{font-size:clamp(32px,10vw,48px)}
+  .why-grid{grid-template-columns:1fr;gap:20px}
+  .stats-grid{gap:14px}
+  .stat-val{font-size:40px}
+  .stat-card{padding:22px 18px}
+  .cases-grid{grid-template-columns:1fr;gap:16px}
+  .certs-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .price-tabs{gap:6px}
+  .price-tab{padding:8px 16px;font-size:13px}
+  .calc-steps{grid-template-columns:repeat(4,1fr);gap:0}
+  .step-label{font-size:9px;max-width:60px}
+  .opt-grid{grid-template-columns:repeat(2,1fr)}
+  .grade-grid{grid-template-columns:repeat(3,1fr)}
+  .form-row{grid-template-columns:1fr}
+  .contact-wrap{grid-template-columns:1fr;padding:32px 24px;gap:32px;border-radius:24px}
+  .contact-left h2{font-size:28px}
+  #contact{padding:56px 16px}
+  footer{padding:24px 20px;flex-direction:column;text-align:center;gap:6px}
+}
+@media(max-width:480px){
+  .certs-grid{grid-template-columns:1fr 1fr}
+  .grade-grid{grid-template-columns:repeat(2,1fr)}
+  .trust-sep{display:none}
+}
+@media(max-width:400px){
+  .hero-title{font-size:52px}
+  .stats-grid{grid-template-columns:1fr}
+  .opt-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav id="navbar">
+  <div class="nav-pill">
+    <div class="nav-logo">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/></svg>
+    </div>
+    <div class="nav-links">
+      <a href="#about">О нас</a>
+      <a href="#price">Прайс</a>
+      <a href="#calc">Калькулятор</a>
+      <a href="#why">Почему мы?</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contact">Контакты</a>
+    </div>
+    <button class="btn-nav" onclick="location.href='#calc'">Рассчитать цену</button>
+    <button class="burger" id="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobileMenu">
+  <a href="#about"      onclick="closeMenu()">О нас</a>
+  <a href="#price"      onclick="closeMenu()">Прайс</a>
+  <a href="#calc"       onclick="closeMenu()">Калькулятор</a>
+  <a href="#why"        onclick="closeMenu()">Почему мы?</a>
+  <a href="#cases"      onclick="closeMenu()">Кейсы</a>
+  <a href="#reviews"    onclick="closeMenu()">Отзывы</a>
+  <a href="#contact"    onclick="closeMenu()">Контакты</a>
+  <a href="#calc" class="mob-cta" onclick="closeMenu()">Рассчитать цену</a>
+</div>
+
+<!-- ════ HERO ════ -->
+<section class="hero" id="about">
+  <div class="hero-bg"></div>
+  <div class="hero-left">
+    <span class="hero-tag">Алматы и область · ГОСТ</span>
+    <h1 class="hero-title">GRAND<br><span class="blue">BETON</span><br>GROUP</h1>
+    <p class="hero-desc">Бетон стандарта ГОСТ, который приезжает вовремя и держит марку. Производство, доставка, гарантия качества.</p>
+    <div class="hero-cta">
+      <button class="btn-hero" onclick="location.href='#calc'">Рассчитать стоимость</button>
+      <button class="btn-calc" onclick="location.href='#price'">Смотреть прайс</button>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><strong>8+</strong><span>лет на рынке</span></div>
+      <div class="trust-sep"></div>
+      <div class="trust-item"><strong>1000+</strong><span>объектов</span></div>
+      <div class="trust-sep"></div>
+      <div class="trust-item"><strong>ГОСТ</strong><span>стандарт</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?w=1200&q=85" alt="Grand Beton Group">
+    <div class="hero-badge"><strong>8+ лет</strong><span>на рынке Алматы</span></div>
+  </div>
+</section>
+
+<!-- ════ PRICE ════ -->
+<section id="price">
+  <div class="sec-head">
+    <div class="label-tag">Цены на бетон</div>
+    <h2 class="display">Прайс-лист</h2>
+    <div class="divider"></div>
+    <p>Цены указаны за 1 м³ с НДС. Доставка рассчитывается отдельно по адресу.</p>
+  </div>
+
+  <div class="price-tabs">
+    <button class="price-tab active" onclick="switchPriceTab(this,'tab-ready')">Товарный бетон</button>
+    <button class="price-tab" onclick="switchPriceTab(this,'tab-pump')">С бетононасосом</button>
+    <button class="price-tab" onclick="switchPriceTab(this,'tab-delivery')">Доставка</button>
+  </div>
+
+  <!-- Товарный бетон -->
+  <div class="price-panel active" id="tab-ready">
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Марка</th>
+            <th>Класс прочности</th>
+            <th>Применение</th>
+            <th>Цена за м³</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="grade">М100</td><td>B7.5</td><td>Подготовительные работы, подбетонка</td><td class="price-val">14 500 ₸</td></tr>
+          <tr><td class="grade">М150</td><td>B12.5</td><td>Отмостки, дорожки, заливка полов</td><td class="price-val">16 000 ₸</td></tr>
+          <tr><td class="grade">М200 <span class="badge-pop">Хит</span></td><td>B15</td><td>Фундаменты, монолитные плиты</td><td class="price-val">17 500 ₸</td></tr>
+          <tr><td class="grade">М250</td><td>B20</td><td>Колонны, балки, лестницы</td><td class="price-val">19 000 ₸</td></tr>
+          <tr><td class="grade">М300 <span class="badge-pop">Хит</span></td><td>B22.5</td><td>Перекрытия, монолитный каркас</td><td class="price-val">21 500 ₸</td></tr>
+          <tr><td class="grade">М350</td><td>B25</td><td>Мосты, промышленные объекты</td><td class="price-val">23 500 ₸</td></tr>
+          <tr><td class="grade">М400</td><td>B30</td><td>Высоконагруженные конструкции</td><td class="price-val">26 000 ₸</td></tr>
+          <tr><td class="grade">М450</td><td>B35</td><td>Гидротехнические сооружения</td><td class="price-val">29 000 ₸</td></tr>
+          <tr><td class="grade">М500</td><td>B40</td><td>Специальные объекты</td><td class="price-val">32 000 ₸</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="price-note">* Минимальный объём заказа — 3 м³. При объёме от 50 м³ — скидка 3%, от 100 м³ — 5%.</p>
+  </div>
+
+  <!-- С бетононасосом -->
+  <div class="price-panel" id="tab-pump">
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <thead>
+          <tr><th>Оборудование</th><th>Длина стрелы</th><th>Стоимость аренды</th><th>Мин. заказ</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Автобетононасос</td><td>37 м</td><td class="price-val">85 000 ₸/смена</td><td>6 ч / 30 м³</td></tr>
+          <tr><td>Автобетононасос</td><td>47 м <span class="badge-pop">Популярный</span></td><td class="price-val">105 000 ₸/смена</td><td>6 ч / 30 м³</td></tr>
+          <tr><td>Автобетононасос</td><td>52 м</td><td class="price-val">125 000 ₸/смена</td><td>6 ч / 30 м³</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="price-note">* Смена — 8 часов. Доставка и обратный рейс насоса включены в пределах Алматы.</p>
+  </div>
+
+  <!-- Доставка -->
+  <div class="price-panel" id="tab-delivery">
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <thead>
+          <tr><th>Транспорт</th><th>Объём / Тоннаж</th><th>Зона</th><th>Стоимость</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Автомиксер</td><td>6–8 м³</td><td>Алматы (в пределах БАКА)</td><td class="price-val">8 000 ₸/рейс</td></tr>
+          <tr><td>Автомиксер</td><td>6–8 м³</td><td>Пригород до 30 км</td><td class="price-val">12 000 ₸/рейс</td></tr>
+          <tr><td>Самосвал</td><td>25 т</td><td>Алматы</td><td class="price-val">15 000 ₸/рейс</td></tr>
+          <tr><td>Самосвал</td><td>40 т <span class="badge-pop">Выгодно</span></td><td>Алматы + область</td><td class="price-val">22 000 ₸/рейс</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="price-note">* Точная стоимость доставки уточняется при оформлении заявки по адресу объекта.</p>
+  </div>
+</section>
+
+<!-- ════ CALCULATOR ════ -->
+<section id="calc">
+  <div class="sec-head">
+    <div class="label-tag">Онлайн-расчёт</div>
+    <h2 class="display">Калькулятор бетона</h2>
+    <div class="divider"></div>
+    <p>Выберите тип конструкции, марку бетона и объём — моментально получите стоимость и оставьте заявку.</p>
+  </div>
+  <div class="calc-wrap">
+    <!-- Progress steps -->
+    <div class="calc-steps" id="calcSteps">
+      <div class="calc-step-dot active" data-step="1">
+        <div class="step-circle">1</div>
+        <div class="step-label">Конструкция</div>
+      </div>
+      <div class="calc-step-dot" data-step="2">
+        <div class="step-circle">2</div>
+        <div class="step-label">Марка бетона</div>
+      </div>
+      <div class="calc-step-dot" data-step="3">
+        <div class="step-circle">3</div>
+        <div class="step-label">Объём</div>
+      </div>
+      <div class="calc-step-dot" data-step="4">
+        <div class="step-circle">4</div>
+        <div class="step-label">Заявка</div>
+      </div>
+    </div>
+
+    <!-- Step 1: Construction type -->
+    <div class="calc-panel active" id="step1">
+      <div class="calc-panel-title">Тип конструкции</div>
+      <div class="opt-grid">
+        <div class="opt-card" onclick="selectOpt(this,'type','foundation')">
+          <div class="opt-icon">🏗️</div>
+          <div class="opt-name">Фундамент</div>
+          <div class="opt-sub">Ленточный, плитный, свайный</div>
+        </div>
+        <div class="opt-card" onclick="selectOpt(this,'type','overlap')">
+          <div class="opt-icon">🧱</div>
+          <div class="opt-name">Перекрытие</div>
+          <div class="opt-sub">Монолитная плита</div>
+        </div>
+        <div class="opt-card" onclick="selectOpt(this,'type','column')">
+          <div class="opt-icon">🏛️</div>
+          <div class="opt-name">Колонны / балки</div>
+          <div class="opt-sub">Несущие элементы</div>
+        </div>
+        <div class="opt-card" onclick="selectOpt(this,'type','road')">
+          <div class="opt-icon">🛣️</div>
+          <div class="opt-name">Дорожки / отмостки</div>
+          <div class="opt-sub">Площадки, парковки</div>
+        </div>
+        <div class="opt-card" onclick="selectOpt(this,'type','floor')">
+          <div class="opt-icon">🏠</div>
+          <div class="opt-name">Полы / стяжка</div>
+          <div class="opt-sub">Промышленные полы</div>
+        </div>
+        <div class="opt-card" onclick="selectOpt(this,'type','other')">
+          <div class="opt-icon">⚙️</div>
+          <div class="opt-name">Другое</div>
+          <div class="opt-sub">Уточним при звонке</div>
+        </div>
+      </div>
+      <div class="calc-nav">
+        <span></span>
+        <button class="btn-next" id="next1" onclick="goStep(2)" disabled>Далее →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Concrete grade -->
+    <div class="calc-panel" id="step2">
+      <div class="calc-panel-title">Марка бетона</div>
+      <div class="grade-grid">
+        <div class="grade-card" onclick="selectGrade(this,'М100',14500)">
+          <div class="gc-grade">М100</div>
+          <div class="gc-class">B7.5</div>
+          <div class="gc-price">14 500 ₸/м³</div>
+        </div>
+        <div class="grade-card" onclick="selectGrade(this,'М150',16000)">
+          <div class="gc-grade">М150</div>
+          <div class="gc-class">B12.5</div>
+          <div class="gc-price">16 000 ₸/м³</div>
+        </div>
+        <div class="grade-card" onclick="selectGrade(this,'М200',17500)">
+          <div class="gc-grade">М200</div>
+          <div class="gc-class">B15</div>
+          <div class="gc-price">17 500 ₸/м³</div>
+          <div class="gc-pop">Хит</div>
+        </div>
+        <div class="grade-card" onclick="selectGrade(this,'М250',19000)">
+          <div class="gc-grade">М250</div>
+          <div class="gc-class">B20</div>
+          <div class="gc-price">19 000 ₸/м³</div>
+        </div>
+        <div class="grade-card" onclick="selectGrade(this,'М300',21500)">
+          <div class="gc-grade">М300</div>
+          <div class="gc-class">B22.5</div>
+          <div class="gc-price">21 500 ₸/м³</div>
+          <div class="gc-pop">Хит</div>
+        </div>
+        <div class="grade-card" onclick="selectGrade(this,'М350',23500)">
+          <div class="gc-grade">М350</div>
+          <div class="gc-class">B25</div>
+          <div class="gc-price">23 500 ₸/м³</div>
+        </div>
+        <div class="grade-card" onclick="selectGrade(this,'М400',26000)">
+          <div class="gc-grade">М400</div>
+          <div class="gc-class">B30</div>
+          <div class="gc-price">26 000 ₸/м³</div>
+        </div>
+        <div class="grade-card" onclick="selectGrade(this,'М450',29000)">
+          <div class="gc-grade">М450</div>
+          <div class="gc-class">B35</div>
+          <div class="gc-price">29 000 ₸/м³</div>
+        </div>
+        <div class="grade-card" onclick="selectGrade(this,'М500',32000)">
+          <div class="gc-grade">М500</div>
+          <div class="gc-class">B40</div>
+          <div class="gc-price">32 000 ₸/м³</div>
+        </div>
+      </div>
+      <div class="calc-nav">
+        <button class="btn-back" onclick="goStep(1)">← Назад</button>
+        <button class="btn-next" id="next2" onclick="goStep(3)" disabled>Далее →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Volume -->
+    <div class="calc-panel" id="step3">
+      <div class="calc-panel-title">Укажите объём</div>
+      <div class="vol-wrap">
+        <div class="vol-display">
+          <span class="vol-number" id="volDisplay">10</span>
+          <span class="vol-unit"> м³</span>
+        </div>
+        <input type="range" class="vol-slider" id="volSlider" min="3" max="500" value="10" oninput="updateVol(this.value)">
+        <div class="vol-marks">
+          <span>3 м³</span><span>50 м³</span><span>100 м³</span><span>250 м³</span><span>500 м³</span>
+        </div>
+        <div class="vol-manual">
+          <input type="number" id="volInput" value="10" min="3" max="9999" oninput="updateVolManual(this.value)">
+          <span>м³ (введите вручную)</span>
+        </div>
+      </div>
+      <div class="calc-nav">
+        <button class="btn-back" onclick="goStep(2)">← Назад</button>
+        <button class="btn-next" onclick="goStep(4)">Рассчитать →</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Result + Form -->
+    <div class="calc-panel" id="step4">
+      <div id="calcResultBox" class="calc-result">
+        <div class="res-label">Предварительная стоимость</div>
+        <div class="res-price" id="resPrice">—</div>
+        <div class="res-hint">без учёта доставки · окончательная цена при звонке</div>
+        <div class="res-details">
+          <div class="res-detail-item">
+            <span>Конструкция</span>
+            <span id="resType">—</span>
+          </div>
+          <div class="res-detail-item">
+            <span>Марка</span>
+            <span id="resGrade">—</span>
+          </div>
+          <div class="res-detail-item">
+            <span>Объём</span>
+            <span id="resVol">—</span>
+          </div>
+          <div class="res-detail-item">
+            <span>Цена/м³</span>
+            <span id="resUnit">—</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-form">
+        <h3>Оставьте заявку</h3>
+        <p>Менеджер уточнит детали и подтвердит итоговую стоимость с доставкой.</p>
+        <div class="form-row">
+          <div class="field"><input type="text" id="cf-name" placeholder="Ваше имя *" autocomplete="name"></div>
+          <div class="field"><input type="tel" id="cf-phone" placeholder="+7 (000) 000-00-00 *" autocomplete="tel"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><input type="text" id="cf-address" placeholder="Адрес объекта"></div>
+          <div class="field"><input type="text" id="cf-date" placeholder="Желаемая дата доставки"></div>
+        </div>
+        <div class="field" style="margin-bottom:14px">
+          <textarea id="cf-comment" placeholder="Комментарий (необязательно)" style="width:100%;padding:13px 16px;border:1.5px solid var(--g200);border-radius:10px;font-size:14px;color:#111;outline:none;font-family:'Manrope',sans-serif;background:#fff;resize:vertical;min-height:70px;transition:border-color .2s"></textarea>
+        </div>
+        <div class="calc-nav" style="margin-top:0">
+          <button class="btn-back" onclick="goStep(3)">← Изменить</button>
+          <button class="btn-submit-calc" onclick="submitCalcForm()">Отправить заявку ✓</button>
+        </div>
+      </div>
+
+      <div class="calc-success" id="calcSuccess">
+        <div class="success-ico">🎉</div>
+        <h3>Заявка принята!</h3>
+        <p>Менеджер Досбол свяжется с вами в течение 10 минут для подтверждения деталей.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ WHY US ════ -->
+<section id="why">
+  <div class="sec-head">
+    <div class="label-tag">Наши преимущества</div>
+    <h2 class="display">Почему мы?</h2>
+    <div class="divider"></div>
+    <p>Мы производим и поставляем товарный бетон всех марок для частных и коммерческих объектов.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card vis-init">
+      <img class="why-card-img" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=700&q=80" alt="Производство">
+      <div class="why-card-body">
+        <div class="why-card-head"><div class="why-num">1</div><h3>Собственное производство</h3></div>
+        <p>Бетон ГОСТ напрямую с завода, без посредников. Контроль качества на каждом этапе.</p>
+      </div>
+    </div>
+    <div class="why-card vis-init">
+      <img class="why-card-img" src="https://images.unsplash.com/photo-1581094651181-35942459ef62?w=700&q=80" alt="Качество">
+      <div class="why-card-body">
+        <div class="why-card-head"><div class="why-num">2</div><h3>Стабильное качество</h3></div>
+        <p>Все марки соответствуют классам прочности (B) и стандарта ГОСТ. Объём честный — бетон не «разбавляется».</p>
+      </div>
+    </div>
+    <div class="why-card vis-init">
+      <img class="why-card-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Автопарк">
+      <div class="why-card-body">
+        <div class="why-card-head"><div class="why-num">3</div><h3>Свой автопарк</h3></div>
+        <p>10 миксеров, 3 автобетонасоса (37м, 47м, 52м), 6 самосвалов по 40т, 5 самосвалов по 25т — не зависим от подрядчиков.</p>
+      </div>
+    </div>
+    <div class="why-card vis-init">
+      <img class="why-card-img" src="https://images.unsplash.com/photo-1530973428-5bf2db2e4d71?w=700&q=80" alt="Лаборатория">
+      <div class="why-card-body">
+        <div class="why-card-head"><div class="why-num">4</div><h3>Лаборатория контроля качества</h3></div>
+        <p>На базе завода ежедневно контролируем качество бетона и сырья.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ STATS ════ -->
+<section id="advantages">
+  <div class="sec-head" style="position:relative;z-index:2">
+    <div class="label-tag">Цифры и факты</div>
+    <h2 class="display">Наши преимущества</h2>
+    <div class="divider"></div>
+    <p>Более 8 лет на рынке товарного бетона в Алматы и области</p>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-card vis-init"><div class="stat-val">180 000 <sup>м³</sup></div><div class="stat-desc">Произведено бетона за 2025 год в Алматы и области.</div></div>
+    <div class="stat-card vis-init"><div class="stat-val">19</div><div class="stat-desc">Поставлено для медицинских объектов.</div></div>
+    <div class="stat-card vis-init"><div class="stat-val">62</div><div class="stat-desc">Поставлено для детских садов и школ.</div></div>
+    <div class="stat-card vis-init"><div class="stat-val">~1000</div><div class="stat-desc">Поставлено для частных объектов.</div></div>
+  </div>
+</section>
+
+<!-- ════ CASES ════ -->
+<section id="cases">
+  <div class="sec-head">
+    <div class="label-tag">Наши работы</div>
+    <h2 class="display">Реализованные кейсы</h2>
+    <div class="divider"></div>
+    <p>Примеры объектов, для которых мы поставляли бетон. Здесь будет ваш контент — свяжитесь с нами, чтобы добавить.</p>
+  </div>
+  <div class="cases-grid">
+    <div class="case-card vis-init">
+      <img class="case-img" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80" alt="ЖК Алматы">
+      <div class="case-overlay"></div>
+      <div class="case-body">
+        <span class="case-tag">Жилое строительство</span>
+        <h3>ЖК «Sunrise» — Алматы</h3>
+        <p>Монолитный каркас 24-этажного дома</p>
+        <div class="case-stats">
+          <span class="case-stat">2 400 м³</span>
+          <span class="case-stat">М300 / B22.5</span>
+          <span class="case-stat">6 недель</span>
+        </div>
+      </div>
+    </div>
+    <div class="case-card vis-init">
+      <img class="case-img" src="https://images.unsplash.com/photo-1562137369-1a1a0bc66744?w=600&q=80" alt="Школа">
+      <div class="case-overlay"></div>
+      <div class="case-body">
+        <span class="case-tag">Социальные объекты</span>
+        <h3>Школа на 1 200 учеников</h3>
+        <p>Фундаментные плиты и перекрытия</p>
+        <div class="case-stats">
+          <span class="case-stat">850 м³</span>
+          <span class="case-stat">М250 / B20</span>
+          <span class="case-stat">4 недели</span>
+        </div>
+      </div>
+    </div>
+    <div class="case-card vis-init">
+      <img class="case-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Склад">
+      <div class="case-overlay"></div>
+      <div class="case-body">
+        <span class="case-tag">Промышленные объекты</span>
+        <h3>Логистический склад 12 000 м²</h3>
+        <p>Промышленные полы и фундаментная плита</p>
+        <div class="case-stats">
+          <span class="case-stat">3 600 м³</span>
+          <span class="case-stat">М350 / B25</span>
+          <span class="case-stat">8 недель</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cases-cta">
+    <p>Здесь будут ваши реальные кейсы с фото и деталями — загрузите контент и мы обновим страницу.</p>
+    <button class="btn-hero" onclick="location.href='#contact'">Обсудить ваш проект</button>
+  </div>
+</section>
+
+<!-- ════ CERTS ════ -->
+<section id="certs">
+  <div class="sec-head">
+    <div class="label-tag">Документы и стандарты</div>
+    <h2 class="display">Сертификация</h2>
+    <div class="divider"></div>
+    <p>Вся продукция сертифицирована. Загрузите ваши документы — разместим их здесь.</p>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card vis-init" onclick="openCertModal('gost')">
+      <div class="cert-placeholder">📋</div>
+      <div class="cert-icon">🏛️</div>
+      <h4>Соответствие ГОСТ</h4>
+      <p>Сертификат соответствия ГОСТ 7473-2010</p>
+      <span class="cert-badge">ГОСТ 7473-2010</span>
+    </div>
+    <div class="cert-card vis-init" onclick="openCertModal('iso')">
+      <div class="cert-placeholder">📄</div>
+      <div class="cert-icon">🌐</div>
+      <h4>ISO 9001:2015</h4>
+      <p>Система менеджмента качества производства</p>
+      <span class="cert-badge">ISO 9001</span>
+    </div>
+    <div class="cert-card vis-init" onclick="openCertModal('lab')">
+      <div class="cert-placeholder">🔬</div>
+      <div class="cert-icon">🧪</div>
+      <h4>Лабораторный контроль</h4>
+      <p>Аккредитация испытательной лаборатории</p>
+      <span class="cert-badge">КаЗСЕ</span>
+    </div>
+    <div class="cert-card vis-init" onclick="openCertModal('eco')">
+      <div class="cert-placeholder">🌿</div>
+      <div class="cert-icon">♻️</div>
+      <h4>Экологический стандарт</h4>
+      <p>Соответствие экологическим нормам РК</p>
+      <span class="cert-badge">Эко-стандарт</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════ REVIEWS ════ -->
+<section id="reviews">
+  <div class="sec-head">
+    <div class="label-tag">Мнения клиентов</div>
+    <h2 class="display">Отзывы</h2>
+    <div class="divider"></div>
+    <p>Реальные отзывы от наших заказчиков. Вы тоже можете оставить свой.</p>
+  </div>
+  <div class="reviews-layout">
+    <!-- Reviews list -->
+    <div class="reviews-list" id="reviewsList">
+      <!-- Seeded reviews -->
+      <div class="review-card vis-init">
+        <span class="review-verified">✓ Проверено</span>
+        <div class="review-header">
+          <div class="review-avatar">А</div>
+          <div class="review-meta">
+            <h4>Алибек Жаксыбеков</h4>
+            <span>Строительная компания «Куат»</span>
+            <div class="review-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+          </div>
+        </div>
+        <p class="review-text">Работаем с Grand Beton уже 3 года. Ни разу не подвели ни по качеству, ни по срокам. М300 всегда приходит в точном объёме, лаборатория даёт паспорта на каждую партию. Рекомендую всем коллегам.</p>
+        <div class="review-date">15 апреля 2025</div>
+      </div>
+      <div class="review-card vis-init">
+        <span class="review-verified">✓ Проверено</span>
+        <div class="review-header">
+          <div class="review-avatar" style="background:#1e4db7">Д</div>
+          <div class="review-meta">
+            <h4>Дмитрий Романенко</h4>
+            <span>Частный застройщик</span>
+            <div class="review-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+          </div>
+        </div>
+        <p class="review-text">Строил дом, заказывал М200 для фундамента — 24 м³. Машина приехала строго по договорённости, бетон хорошей консистенции. Через месяц замерили прочность — соответствует. Буду обращаться снова на перекрытия.</p>
+        <div class="review-date">3 марта 2025</div>
+      </div>
+      <div class="review-card vis-init">
+        <span class="review-verified">✓ Проверено</span>
+        <div class="review-header">
+          <div class="review-avatar" style="background:#059669">Г</div>
+          <div class="review-meta">
+            <h4>Гульмира Сейткали</h4>
+            <span>ТОО «Строй-Проект»</span>
+            <div class="review-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span>
+            </div>
+          </div>
+        </div>
+        <p class="review-text">Большой заказ на школу — 850 м³ разных марок. Менеджер Досбол оперативно всё согласовал, насос 47 метров закрыл все перекрытия без перестановки. Небольшая задержка была на 3-ей поставке, но предупредили заранее и оперативно решили.</p>
+        <div class="review-date">18 февраля 2025</div>
+      </div>
+    </div>
+
+    <!-- Add review -->
+    <div class="add-review-box">
+      <h3>Оставить отзыв</h3>
+      <p>Ваш опыт поможет другим сделать правильный выбор.</p>
+      <div class="star-picker" id="starPicker">
+        <button class="star-btn" onclick="setStar(1)">★</button>
+        <button class="star-btn" onclick="setStar(2)">★</button>
+        <button class="star-btn" onclick="setStar(3)">★</button>
+        <button class="star-btn" onclick="setStar(4)">★</button>
+        <button class="star-btn" onclick="setStar(5)">★</button>
+      </div>
+      <div class="rev-field"><input type="text" id="rev-name" placeholder="Ваше имя *"></div>
+      <div class="rev-field"><input type="text" id="rev-company" placeholder="Компания / должность"></div>
+      <div class="rev-field"><textarea id="rev-text" placeholder="Ваш отзыв *" style="min-height:100px"></textarea></div>
+      <button class="btn-post" onclick="postReview()">Опубликовать отзыв</button>
+      <div class="reviews-count" id="reviewsCount">Уже 3 отзыва</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CONTACT ════ -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="contact-left">
+      <h2>Оставьте заявку — перезвоним за 10 минут</h2>
+      <p>Рассчитаем стоимость, уточним объём и согласуем удобное время доставки.</p>
+      <div class="contact-details">
+        <div class="contact-row">
+          <div class="contact-icon">📞</div>
+          <a href="tel:+77013175050">+7 701 317 5050</a>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">✉️</div>
+          <a href="mailto:abdrakhmanov.d.d@mail.ru">abdrakhmanov.d.d@mail.ru</a>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📍</div>
+          <a href="https://2gis.ru/geo/76.787484,43.369642" target="_blank" rel="noopener">
+            Казахстан, Алматы,<br>ул. Токпанова, 10, БЦ «Akbulak»<br><small style="color:rgba(255,255,255,.5);font-size:11px">Открыть в 2GIS →</small>
+          </a>
+        </div>
+      </div>
+      <div class="map-wrap" style="margin-top:20px">
+        <a href="https://2gis.ru/geo/76.787484,43.369642" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.75);padding:16px;border-radius:12px;font-size:14px;font-weight:600;border:1px solid rgba(255,255,255,.12);transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.13)'" onmouseout="this.style.background='rgba(255,255,255,.07)'">
+          <span style="font-size:20px">🗺️</span>
+          <span>Смотреть на карте в 2GIS</span>
+          <span style="opacity:.5;font-size:16px">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="cfield"><input type="text" id="c-name" placeholder="Введите имя" autocomplete="name"></div>
+      <div class="cfield"><input type="tel" id="c-phone" placeholder="+7 (000) 000-00-00" autocomplete="tel"></div>
+      <button class="btn-submit" onclick="submitContact()">Отправить заявку</button>
+      <p class="manager-tag">Менеджер: Досбол Абдрахманов</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="footer-logo">Grand Beton Group</div>
+  <p>© 2025 Grand Beton Group. Все права защищены.</p>
+  <p>Алматы, Казахстан</p>
+</footer>
+
+<!-- ════ CERT MODAL ════ -->
+<div class="modal-overlay" id="certModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeCertModal()">✕</button>
+    <h3 id="modalTitle">Сертификат</h3>
+    <div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,var(--g100),var(--g200));border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:48px;border:1px solid var(--g200)">📋</div>
+    <p id="modalDesc" style="font-size:14px;color:var(--tmut);line-height:1.7;margin-bottom:16px"></p>
+    <p style="font-size:12px;color:var(--tmut)">Загрузите документ — разместим скан в этом разделе.</p>
+  </div>
+</div>
+
+<!-- ════ TOAST ════ -->
+<div class="toast" id="toast"></div>
+
+<!-- ════ SCRIPTS ════ -->
+<script>
+/* ── Nav ── */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',scrollY>10),{passive:true});
+function toggleMenu(){
+  document.getElementById('burger').classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('burger').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+/* ── Intersection observer ── */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('vis'),i*80);
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.vis-init').forEach(el=>io.observe(el));
+
+/* ── Price tabs ── */
+function switchPriceTab(btn,id){
+  document.querySelectorAll('.price-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.price-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+/* ── Calculator ── */
+const calcState = {type:null,grade:null,gradePrice:0,vol:10,step:1};
+const typeLabels = {foundation:'Фундамент',overlap:'Перекрытие',column:'Колонны/балки',road:'Дорожки/отмостки',floor:'Полы/стяжка',other:'Другое'};
+
+function goStep(n){
+  document.querySelectorAll('.calc-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('step'+n).classList.add('active');
+  document.querySelectorAll('.calc-step-dot').forEach(d=>{
+    const s=+d.dataset.step;
+    d.classList.toggle('active',s===n);
+    d.classList.toggle('done',s<n);
+  });
+  calcState.step=n;
+  if(n===4) renderResult();
+  document.getElementById('calc').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function selectOpt(el,key,val){
+  document.querySelectorAll('.opt-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  calcState[key]=val;
+  document.getElementById('next1').disabled=false;
+}
+
+function selectGrade(el,grade,price){
+  document.querySelectorAll('.grade-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  calcState.grade=grade;
+  calcState.gradePrice=price;
+  document.getElementById('next2').disabled=false;
+}
+
+function updateVol(v){
+  calcState.vol=+v;
+  document.getElementById('volDisplay').textContent=v;
+  document.getElementById('volInput').value=v;
+  const pct=((v-3)/(500-3)*100)+'%';
+  document.getElementById('volSlider').style.setProperty('--pct',pct);
+}
+function updateVolManual(v){
+  const val=Math.max(3,+v||3);
+  calcState.vol=val;
+  document.getElementById('volDisplay').textContent=val;
+  const sliderVal=Math.min(val,500);
+  document.getElementById('volSlider').value=sliderVal;
+  const pct=((sliderVal-3)/(500-3)*100)+'%';
+  document.getElementById('volSlider').style.setProperty('--pct',pct);
+}
+
+function renderResult(){
+  const total=calcState.gradePrice*calcState.vol;
+  const disc=calcState.vol>=100?0.95:calcState.vol>=50?0.97:1;
+  const discTotal=Math.round(total*disc);
+  document.getElementById('resPrice').textContent=fmtPrice(discTotal)+' ₸'+(disc<1?' (со скидкой)':'');
+  document.getElementById('resType').textContent=typeLabels[calcState.type]||'—';
+  document.getElementById('resGrade').textContent=calcState.grade||'—';
+  document.getElementById('resVol').textContent=calcState.vol+' м³';
+  document.getElementById('resUnit').textContent=fmtPrice(calcState.gradePrice)+' ₸';
+}
+
+function fmtPrice(n){return n.toLocaleString('ru-RU')}
+
+function submitCalcForm(){
+  const name=document.getElementById('cf-name').value.trim();
+  const phone=document.getElementById('cf-phone').value.trim();
+  if(!name||!phone){showToast('⚠️ Заполните имя и телефон');return;}
+  document.querySelector('.calc-form').style.display='none';
+  document.getElementById('calcResultBox').style.display='none';
+  document.getElementById('calcSuccess').style.display='block';
+  showToast('✓ Заявка отправлена! Ждите звонка.');
+}
+
+/* ── Reviews ── */
+let currentStars=5;
+let reviewCount=3;
+function setStar(n){
+  currentStars=n;
+  document.querySelectorAll('.star-btn').forEach((b,i)=>b.classList.toggle('lit',i<n));
+}
+// Init stars
+document.querySelectorAll('.star-btn').forEach(b=>b.classList.add('lit'));
+
+function postReview(){
+  const name=document.getElementById('rev-name').value.trim();
+  const text=document.getElementById('rev-text').value.trim();
+  if(!name||!text){showToast('⚠️ Введите имя и текст отзыва');return;}
+  const company=document.getElementById('rev-company').value.trim();
+  const initials=name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  const colors=['#0d2a5e','#1e4db7','#059669','#7c3aed','#dc2626','#ea580c'];
+  const color=colors[reviewCount%colors.length];
+  const stars='★'.repeat(currentStars)+'<span class="star empty">★</span>'.repeat(5-currentStars);
+  const now=new Date();
+  const dateStr=now.toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'});
+  const card=document.createElement('div');
+  card.className='review-card';
+  card.style.opacity='0';card.style.transform='translateY(20px)';card.style.transition='opacity .4s,transform .4s';
+  card.innerHTML=`
+    <div class="review-header">
+      <div class="review-avatar" style="background:${color}">${initials}</div>
+      <div class="review-meta">
+        <h4>${escHtml(name)}</h4>
+        <span>${escHtml(company)||'Частный клиент'}</span>
+        <div class="review-stars">${'<span class="star">★</span>'.repeat(currentStars)}${'<span class="star empty">★</span>'.repeat(5-currentStars)}</div>
+      </div>
+    </div>
+    <p class="review-text">${escHtml(text)}</p>
+    <div class="review-date">${dateStr}</div>`;
+  document.getElementById('reviewsList').prepend(card);
+  reviewCount++;
+  document.getElementById('reviewsCount').textContent=`Уже ${reviewCount} отзывов${reviewCount>=5?'':'а'}`;
+  setTimeout(()=>{card.style.opacity='1';card.style.transform='translateY(0)'},50);
+  document.getElementById('rev-name').value='';
+  document.getElementById('rev-company').value='';
+  document.getElementById('rev-text').value='';
+  setStar(5);
+  showToast('✓ Отзыв опубликован! Спасибо.');
+}
+
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+/* ── Contact form ── */
+function submitContact(){
+  const name=document.getElementById('c-name').value.trim();
+  const phone=document.getElementById('c-phone').value.trim();
+  if(!name||!phone){showToast('⚠️ Заполните имя и телефон');return;}
+  document.getElementById('c-name').value='';
+  document.getElementById('c-phone').value='';
+  showToast('✓ Заявка принята! Перезвоним в течение 10 минут.');
+}
+
+/* ── Cert modal ── */
+const certData={
+  gost:{title:'Соответствие ГОСТ 7473-2010',desc:'Сертификат подтверждает, что производимый товарный бетон соответствует требованиям государственного стандарта ГОСТ 7473-2010 «Смеси бетонные». Документ будет размещён после загрузки скан-копии.'},
+  iso:{title:'Сертификат ISO 9001:2015',desc:'Система менеджмента качества производства сертифицирована по международному стандарту ISO 9001:2015. Подтверждает стабильность процессов на всех этапах производства. Загрузите файл для отображения.'},
+  lab:{title:'Аккредитация лаборатории',desc:'Испытательная лаборатория завода аккредитована в системе КаЗСЕ. Проводит ежедневный контроль прочности, подвижности и состава бетонных смесей. Документ появится после загрузки.'},
+  eco:{title:'Экологический стандарт РК',desc:'Производство соответствует экологическим нормам и стандартам Республики Казахстан. Все материалы сертифицированы на безопасность. Загрузите документ для отображения.'}
+};
+function openCertModal(key){
+  const d=certData[key];
+  document.getElementById('modalTitle').textContent=d.title;
+  document.getElementById('modalDesc').textContent=d.desc;
+  document.getElementById('certModal').classList.add('open');
+}
+function closeCertModal(){document.getElementById('certModal').classList.remove('open')}
+document.getElementById('certModal').addEventListener('click',function(e){if(e.target===this)closeCertModal()});
+
+/* ── Toast ── */
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3200);
+}
+
+/* ── Init slider style ── */
+document.addEventListener('DOMContentLoaded',()=>updateVol(10));
+</script>
+</body>
+</html>
